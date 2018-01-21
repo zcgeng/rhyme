@@ -1,4 +1,8 @@
 *
 !.gitignore
 !README.md
+!requirements.txt
+!*.py
+
 !dict
+!src
