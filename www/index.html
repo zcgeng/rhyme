@@ -59,7 +59,9 @@
       }
       $("#search").click(submit);
       $("#input_word").bind('keypress', (e)=>{
-        if(e.keyCode == 13 || e.keyCode == 84){
+        if(e.keyCode == 13){
+          submit();
+        } else if (e.keyCode == 84) {
           $("#search").focus();
           submit();
         }
