@@ -39,7 +39,7 @@ def get_tags(rhyme_index, word):
         else:
             return [tag2]
     except Exception as e:
-        print(word, e)
+        # print(word, e)
         return ''
 
 
@@ -53,6 +53,10 @@ def gen_dictionary(rhyme_index, words):
             dictionary[tag].append(w)
     return dictionary
 
+groups = gen_groups()
+clusters = gen_clusters(groups, cluster_strict)
+rhyme_index = gen_index(clusters)
+
 def init(filepath):
     print("词库初始化中...")
     words = []
@@ -65,9 +69,6 @@ def init(filepath):
     print("词库初始化完成")
 
 if __name__ == '__main__':
-    groups = gen_groups()
-    clusters = gen_clusters(groups, cluster_strict)
-    rhyme_index = gen_index(clusters)
 
     help_message = """Usage:
     python3 {} init /path/to/dictionary --  Generate the dictionary

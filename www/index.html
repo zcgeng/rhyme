@@ -32,17 +32,37 @@
         </div>
       </div>
 
+      <div class="panel panel-default" style="margin-top:30px;">
+        <div class="panel-heading">
+          <h3 class="panel-title">搜索结果</h3>
+        </div>
+        <div class="panel-body">
+          <p id='result'></p>
+        </div>
+      </div>
+
     </div>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <script type="text/javascript">
-      $("#search").click((e)=>{
+      function submit(){
         let word = $("#input_word").val();
-        $.get('rhyme/api', word, (data)=>{
-          console.log(data);
-        })
+        $.get('api/search-word', {'word':word}, (data)=>{
+          res = "";
+          for(let i in data){
+            res += data[i] + '&nbsp;&nbsp;&nbsp;&nbsp;';
+          }
+          $("#result").html(res);
+        });
+      }
+      $("#search").click(submit);
+      $("#input_word").bind('keypress', (e)=>{
+        if(e.keyCode == 13 || e.keyCode == 84){
+          $("#search").focus();
+          submit();
+        }
       })
     </script>
   </body>

@@ -3,6 +3,8 @@
 !README.md
 !requirements.txt
 !*.py
+!*.ini
+!restart.sh
 
 !dict
 !src
