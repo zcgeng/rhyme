@@ -1,5 +1,8 @@
 # 押韵搜索
 
+## DEMO
+https://www.zhaochanggeng.com/rhyme
+
 ## 使用方法
 ``` sh
 pip3 install -r requirements.txt
